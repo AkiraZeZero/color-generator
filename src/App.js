@@ -1,23 +1,26 @@
 import "./App.css";
+import useGenerateColor from "./Components/useGenerateColor";
 
 function App() {
-  const colorPicker = () => {
-    const randomColor =
-    Math.floor(Math.random()*16777215).toString(16);
-    document.body.style.backgroundColor = "#" + randomColor;
-    colorPicker.innerHTML = "#" + randomColor
-  };
+  const { color, generateColor } = useGenerateColor();
 
   return (
     <div className="App">
       <div>
-      <div className="colorCard">
-        <div className="color"></div>
-        <div className="bottomCard"></div>
-      </div>
-      <div className="button">
-        <button onClick={colorPicker} className="btn">New Color!</button>
-      </div>  
+        <div className="colorCard">
+          <div
+            className="color"
+            style={{
+              backgroundColor: "#" + color,
+            }}
+          ></div>
+          <div className="bottomCard"></div>
+        </div>
+        <div className="button">
+          <button onClick={generateColor} className="btn">
+            New Color!
+          </button>
+        </div>
       </div>
     </div>
   );
